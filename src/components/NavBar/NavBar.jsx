@@ -4,7 +4,7 @@ import { GiTeacher } from "react-icons/gi";
 import { SiGoogleclassroom } from "react-icons/si";
 import { MdDashboard } from "react-icons/md";
 import { HomeOutlined, UserOutlined, LoginOutlined  } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const NavBar = () => {
@@ -12,6 +12,8 @@ const NavBar = () => {
     const handleLogout = () =>{
         logOut()
     }
+
+    
     return (
         <Menu mode="horizontal" className=' text-xl mt-4 pb-4'>
         <Menu.Item key="art" >
@@ -24,7 +26,8 @@ const NavBar = () => {
         Instructor
         </Menu.Item>
         <Menu.Item key="classes" icon={<SiGoogleclassroom className='text-xl'/>}>
-        Classes
+            <Link to="/approvedClasses">Classes</Link>
+        
         </Menu.Item>
         <Menu.Item key="dashboard" icon={<MdDashboard className='text-xl'/>}>
         Dashboard

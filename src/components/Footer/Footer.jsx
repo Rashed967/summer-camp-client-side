@@ -6,7 +6,7 @@ const { Footer } = Layout;
 
 const FooterCompo = () => {
     return (
-        <div>
+        <div className=' mt-48'>
             {/* <!--Footer container--> */}
 <footer class="bg-neutral-200 text-center text-white dark:bg-neutral-600">
   <div class="container pt-9">
