@@ -8,17 +8,20 @@ const Instructors = () => {
     const [instructors, instructorLoading, refetch] = useInstructor()
     console.log(instructors)
     return (
-        <div>
+        <div className='grid md:grid-cols-2 gap-6 lg:grid-cols-3 mt-20'>
             {
                 instructors.map(instructor => <Card key={instructor._id}
                     hoverable
-                    style={{ width: 240 }}
-                    cover={<img alt="example" src="https://shorturl.at/ahSY6" />}
+                    style={{ width: 350}}
+                    cover={<img alt="example" src={instructor.image} />}
                 >
-                    <Meta title={instructor.name} description="www.instagram.com" />
-                    <Card title="Card title" bordered={false}>
-                        Card content
-                    </Card>
+                    <div className='space-y-2'>
+                    <Meta title={instructor.name} />
+                    <p>Email : {instructor.email}</p>
+                    <p>Classes Taken : {instructor.classesTaken}</p>
+                    <p>Classes : {instructor.classes.map(cl => <sapn className="ml-1">{cl},</sapn>)}</p>
+                    </div>
+                    
                 </Card>)
             }
 
