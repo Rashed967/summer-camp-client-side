@@ -1,5 +1,5 @@
 import { Carousel } from 'antd';
-import img from '../../assets/slider images/img.jpg'
+import img4 from '../../assets/slider images/img4.jpg'
 import img1 from '../../assets/slider images/img1.jpg'
 import img2 from '../../assets/slider images/img2.jpg'
 import img3 from '../../assets/slider images/img3.jpg'
@@ -21,18 +21,21 @@ const BannerSlider = () => {
     
     return (
         <Carousel autoplay={true} afterChange={onChange}>
-      <div>
+      <div className='lg:h-[800px]'>
         {/* <h3 style={contentStyle}>1</h3> */}
-        <img src={img} alt="" />
+        <img className='object-fill w-full ' src={img1} alt="" />
       </div>
-      <div>
-        <h3 style={contentStyle}>2</h3>
+      <div className='lg:h-[800px]'>
+        
+            <img className='object-fill w-full ' src={img2} alt="" />
+    
       </div>
-      <div>
-        <h3 style={contentStyle}>3</h3>
+      <div className='lg:h-[800px]'>
+        <img className='object-fill w-full ' src={img3} alt="" />
       </div>
-      <div>
-        <h3 style={contentStyle}>4</h3>
+
+      <div className='lg:h-[800px]'>
+        <img className='object-fill w-full ' src={img4} alt="" />
       </div>
     </Carousel>
     );
