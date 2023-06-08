@@ -1,20 +1,57 @@
 import { Button, Form, Input, Select } from 'antd';
 import { Option } from 'antd/es/mentions';
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
+import { FcGoogle } from 'react-icons/fc';
+import { set } from 'react-hook-form';
 
 const Register = () => {
-    // const {createUser} = useContext(AuthContext)
+    const {createUser, googleSignIn} = useContext(AuthContext)
+    const [error, setError] = useState('')
    
     const onFinish = (values) => {
         const {name, email, password, confirm,photoUrl, gender} = values
         console.log(name, email,password, confirm ,photoUrl, gender)
-      
+
+        if(password.length < 6){
+            return setError("At least 6 character required")
+        }
+        if(!/[A-Z]/.test(password)){
+            return setError("At least one capital letter for requried")
+        }
+        if(!/[!@#$%^&*]/.test(password)){
+           return setError("At lest one special character required")
+        }
+        if(password !== confirm){
+            return setError("password does not match")
+        }
+        if(password === confirm){
+            createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                alert("user created successfully")
+            })
+
+        }
         
       };
       const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
       };
+
+      const signInWithGoogle = () => {
+        googleSignIn()
+        .then(result => {
+            const user = result.user;
+            console.log(user)         
+            alert("user logged in successfully")
+        })
+        .catch(error => {
+            alert(error.message)
+        }) 
+      }
     return (
         <div className="w-3/4 mx-auto">   
             <h2>login page</h2>
@@ -119,7 +156,20 @@ const Register = () => {
           <Option value="other">other</Option>
         </Select>
       </Form.Item>
+        
 
+    {
+     error &&   <Form.Item
+        name="remember"
+        valuePropName="checked"
+        wrapperCol={{
+          offset: 8,
+          span: 16,
+        }}
+      >
+       <p><span className='text-red-500'>{error}</span></p>
+      </Form.Item>
+    }
 
     <Form.Item
       name="remember"
@@ -140,6 +190,17 @@ const Register = () => {
     >
     
       <Button className="bg-blue-900" type="primary" htmlType="submit">Submit</Button>
+    </Form.Item>
+    <Form.Item className="text-center"
+      wrapperCol={{
+        offset: 8,
+        span: 16,
+      }}
+    >
+        <p className="text-2xl font-medium border-b-4 pb-3 mb-3">Social Login</p>
+   <div className="flex justify-center">
+   <FcGoogle onClick={signInWithGoogle} className="text-3xl"></FcGoogle>
+   </div>
     </Form.Item>
   </Form>
             

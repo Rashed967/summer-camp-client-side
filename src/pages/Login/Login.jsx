@@ -3,23 +3,36 @@ import { Button, Checkbox, Form, Input } from 'antd';
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
-    const {createUser} = useContext(AuthContext)
+    const {loginUser, googleSignIn} = useContext(AuthContext)
    
     const onFinish = (values) => {
         const {email, password, } = values
-        createUser(email, password)
+        loginUser(email, password)
         .then(result => {
             const user = result.user;
             console.log(user)         
-            alert("creater user successfully")
+            alert("user logged in successfully")
         })
         
       };
       const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
       };
+
+      const signInWithGoogle = () => {
+        googleSignIn()
+        .then(result => {
+            const user = result.user;
+            console.log(user)         
+            alert("user logged in successfully")
+        })
+        .catch(error => {
+            alert(error.message)
+        }) 
+      }
   
   
     return (
@@ -89,6 +102,19 @@ const Login = () => {
     
       <Button className="bg-blue-900" type="primary" htmlType="submit">Submit</Button>
     </Form.Item>
+
+    <Form.Item className="text-center"
+      wrapperCol={{
+        offset: 8,
+        span: 16,
+      }}
+    >
+        <p className="text-2xl font-medium border-b-4 pb-3 mb-3">Social Login</p>
+   <div className="flex justify-center">
+   <FcGoogle onClick={signInWithGoogle} className="text-3xl"></FcGoogle>
+   </div>
+    </Form.Item>
+
   </Form>
             
         </div>
