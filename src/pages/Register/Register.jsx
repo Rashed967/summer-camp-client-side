@@ -27,6 +27,7 @@ const Register = () => {
             return setError("password does not match")
         }
         if(password === confirm){
+            setError("")
             createUser(email, password)
             .then(result => {
                 const user = result.user;

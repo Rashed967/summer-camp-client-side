@@ -1,11 +1,12 @@
+import BannerSlider from "../../components/BannerSlider/BannerSlider";
 
 
 
 const Home = () => {
     return (
         <div>
-            
-            <h2>Home page </h2>
+            <BannerSlider></BannerSlider>
+           
         </div>
     );
 };
