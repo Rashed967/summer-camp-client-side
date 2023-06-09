@@ -15,7 +15,7 @@ const contentStyle = {
 
 const BannerSlider = () => {
     const onChange = (currentSlide) => {
-        console.log(currentSlide);
+        // console.log(currentSlide);
       };
     
     
