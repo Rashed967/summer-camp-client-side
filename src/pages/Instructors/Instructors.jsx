@@ -8,7 +8,7 @@ const Instructors = () => {
     const [instructors, instructorLoading, refetch] = useInstructor()
     console.log(instructors)
     return (
-        <div className='grid md:grid-cols-2 gap-6 lg:grid-cols-3 mt-20'>
+        <div className='grid md:grid-cols-2 gap-6 lg:grid-cols-4 mt-20'>
             {
                 instructors.map(instructor => <Card key={instructor._id}
                     hoverable
