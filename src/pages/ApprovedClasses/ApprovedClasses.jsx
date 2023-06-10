@@ -5,6 +5,7 @@ import {  Button, Card } from 'antd';
 import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 const { Meta } = Card;
 
 
@@ -16,10 +17,20 @@ const ApprovedClasses = () => {
         <p>Loading...</p>
         
     }
-    const selectClass = () => {
+    const selectClass = (id) => {
         if(!user){
            return navigate('/login')
         }
+        const bookedClass = classes.find(cl => cl._id !== id)
+        console.log(bookedClass)
+        axios.post('http://localhost:5000/bookedClasses', bookedClass)
+        .then(respons => {
+            console.log(respons)
+        })
+        .catch(error => {
+            console.error(error)
+        })
+        
     }
 
    
@@ -39,7 +50,7 @@ const ApprovedClasses = () => {
                         actions={[
                             `price : ${cl.price}`,
                             `Seats : ${cl.availableSeats}`,
-                            <Button onClick={selectClass} type="primary" className='bg-blue-600 flex items-center' block><ArrowRightOutlined/> Select</Button>,
+                            <Button onClick={() => selectClass(cl._id)} type="primary" className='bg-blue-600 flex items-center' block><ArrowRightOutlined/> Select</Button>,
                         ]}
                         >
                         

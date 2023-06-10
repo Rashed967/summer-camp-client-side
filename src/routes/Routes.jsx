@@ -5,6 +5,8 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Instructors from "../pages/Instructors/Instructors";
 import ApprovedClasses from "../pages/ApprovedClasses/ApprovedClasses";
+import DashBoard from "../layout/DashBoard";
+import StudentDashBoard from "../pages/StudentDashBoard/StudentDashBoard";
 
 
 
@@ -35,6 +37,16 @@ const router = createBrowserRouter([
         }
       ]
     },
+    {
+        path : "dashboard",
+        element : <DashBoard></DashBoard>,
+        children : [
+            {
+                path : "studentDashboard",
+                element : <StudentDashBoard></StudentDashBoard>
+            }
+        ]
+    }
   ]);
 
 

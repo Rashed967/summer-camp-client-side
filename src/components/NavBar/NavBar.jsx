@@ -30,7 +30,7 @@ const NavBar = () => {
         
         </Menu.Item>
         <Menu.Item key="dashboard" icon={<MdDashboard className='text-xl'/>}>
-        Dashboard
+        <Link to="dashboard">Dashboard</Link>
         </Menu.Item>
         {
             user && <Menu.Item key="profile" icon={<UserOutlined className='text-xl'/>}>
