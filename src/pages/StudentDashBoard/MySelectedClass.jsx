@@ -1,11 +1,35 @@
 import React, { useEffect } from 'react';
 import { Button, Space, Table, Tag } from 'antd';
 import axios from 'axios';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient} from '@tanstack/react-query';
+
 
 
 
 const MySelectedClass = () => {
+    const queryClient = useQueryClient();
+    
+    const deleteData = async (id) => {
+        const response = await axios.delete(`http://localhost:5000/bookedClasses/${id}`);
+        console.log(response.data)
+        refetch
+        return response.data;
+    };
+    const mutation = useMutation(deleteData, {
+        onSuccess: () => {
+            queryClient.invalidateQueries('selectedClasses');
+          },
+    });
+    
+      const handleDelete = (id) => {
+        mutation.mutate(id);
+        console.log(id)
+        
+      };
+      
+      const handldePay = id => {
+        console.log(id)
+      }
 
 
     const {data : selectedClasses = [], isLoading : selectedClassLoading, refetch} = useQuery({
@@ -14,6 +38,7 @@ const MySelectedClass = () => {
             const respons = await axios.get('http://localhost:5000/bookedClasses')
             if(selectedClassLoading){
                 <p>Loading</p>
+                refetch()
             }
             return respons.data
         }
@@ -47,8 +72,8 @@ const MySelectedClass = () => {
           key: 'action',
           render: (_, record) => (
             <Space size="middle">
-              <Button className='bg-purple-600' type='primary'>Payment</Button>
-              <Button className='bg-danger-700' type='primary'>Delete</Button>
+              <Button onClick={() => handldePay(record._id)} className='bg-purple-600' type='primary'>Payment</Button>
+              <Button onClick={() =>handleDelete(record._id)} className='bg-danger-700' type='primary'>Delete</Button>
               
             </Space>
           ),
