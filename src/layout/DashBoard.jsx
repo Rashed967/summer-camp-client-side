@@ -28,6 +28,14 @@ const DashBoard = () => {
                         </ul>
 
                     </div>
+                    <div className='border-b-2 pb-6'>
+                        <h3 className='font-medium text-xl mb-4'>Instructor DashBoard</h3>
+                        <ul className='space-y-2'>
+                            <li><Link to="addAClass">Add a class</Link></li>
+                            <li><Link to="myClassInstructor">My Classes</Link></li>
+                        </ul>
+
+                    </div>
                 </Drawer>
             </>
             <Outlet></Outlet>

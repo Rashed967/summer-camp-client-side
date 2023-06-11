@@ -6,7 +6,7 @@ const StudentDashBoard = () => {
     return (
         <div>
             <h1>Student DashBoard</h1>
-            <Outlet></Outlet>
+            {/* <Outlet></Outlet> */}
 
         </div>
     );

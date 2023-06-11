@@ -9,6 +9,8 @@ import DashBoard from "../layout/DashBoard";
 import StudentDashBoard from "../pages/StudentDashBoard/StudentDashBoard";
 import MySelectedClass from "../pages/StudentDashBoard/MySelectedClass";
 import MyEnrolledClass from "../pages/StudentDashBoard/MyEnrolledClass";
+import AddAClass from "../pages/InstructorDashboard/AddAClass";
+import MyClassInstructor from "../pages/InstructorDashboard/MyClassInstructor";
 
 
 
@@ -43,10 +45,7 @@ const router = createBrowserRouter([
         path : "dashboard",
         element : <DashBoard></DashBoard>,
         children : [
-            {
-                path : "studentDashboard",
-                element : <StudentDashBoard></StudentDashBoard>,   
-            },
+         
             {
                 path : "mySelectedClasses",
                 element : <MySelectedClass></MySelectedClass> 
@@ -54,6 +53,14 @@ const router = createBrowserRouter([
             {
                 path : "enrolledClass",
                 element : <MyEnrolledClass></MyEnrolledClass>
+            },
+            {
+                path : "addAClass",
+                element : <AddAClass></AddAClass>
+            },
+            {
+                path : "myClassInstructor",
+                element : <MyClassInstructor></MyClassInstructor>
             }
         ]
     }
