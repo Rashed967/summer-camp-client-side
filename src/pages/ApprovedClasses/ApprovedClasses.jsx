@@ -21,7 +21,7 @@ const ApprovedClasses = () => {
         if(!user){
            return navigate('/login')
         }
-        const bookedClass = classes.find(cl => cl._id !== id)
+        const bookedClass = classes.find(cl => cl._id === id)
         console.log(bookedClass)
         axios.post('http://localhost:5000/bookedClasses', bookedClass)
         .then(respons => {
