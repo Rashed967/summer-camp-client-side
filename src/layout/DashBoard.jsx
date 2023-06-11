@@ -5,34 +5,34 @@ import { Link, Outlet } from 'react-router-dom';
 const DashBoard = () => {
     const [open, setOpen] = useState(false);
 
-  const showDrawer = () => {
-    setOpen(true);
-  };
+    const showDrawer = () => {
+        setOpen(true);
+    };
 
-  const onClose = () => {
-    setOpen(false);
-  };
+    const onClose = () => {
+        setOpen(false);
+    };
 
     return (
         <div className='mt-5'>
             <>
-      <Button className='bg-blue-600' type="primary" onClick={showDrawer}>
-        Open menu
-      </Button>
-      <Drawer title="Close menu" placement="left" onClose={onClose} open={open}>
-        <div className='border-b-2 pb-6'>
-            <h3 className='font-medium text-xl mb-4'>DashBoard</h3>
-        <ul className='space-y-2'>
-            <li><Link>Admin Dashboard</Link></li>
-            <li><Link>Instructor Dashboard</Link></li>
-            <li><Link to="studentDashBoard">Student Dashboard</Link></li>
-        </ul>
+                <Button className='bg-blue-600 mb-6' type="primary" onClick={showDrawer}>
+                    Open menu
+                </Button>
+                <Drawer title="Close menu" placement="left" onClose={onClose} open={open}>
+                    <div className='border-b-2 pb-6'>
+                        <h3 className='font-medium text-xl mb-4'>Studnet DashBoard</h3>
+                        <ul className='space-y-2'>
+                            <li><Link to="mySelectedClasses">My Selected Classes</Link></li>
+                            <li><Link to="enrolledClass">Enrolled classes</Link></li>
+                        </ul>
+
+                    </div>
+                </Drawer>
+            </>
+            <Outlet></Outlet>
         </div>
-      </Drawer>
-    </>
-    <Outlet></Outlet>
-        </div>
-        
+
     );
 };
 

@@ -7,6 +7,8 @@ import Instructors from "../pages/Instructors/Instructors";
 import ApprovedClasses from "../pages/ApprovedClasses/ApprovedClasses";
 import DashBoard from "../layout/DashBoard";
 import StudentDashBoard from "../pages/StudentDashBoard/StudentDashBoard";
+import MySelectedClass from "../pages/StudentDashBoard/MySelectedClass";
+import MyEnrolledClass from "../pages/StudentDashBoard/MyEnrolledClass";
 
 
 
@@ -43,7 +45,15 @@ const router = createBrowserRouter([
         children : [
             {
                 path : "studentDashboard",
-                element : <StudentDashBoard></StudentDashBoard>
+                element : <StudentDashBoard></StudentDashBoard>,   
+            },
+            {
+                path : "mySelectedClasses",
+                element : <MySelectedClass></MySelectedClass> 
+            },
+            {
+                path : "enrolledClass",
+                element : <MyEnrolledClass></MyEnrolledClass>
             }
         ]
     }
