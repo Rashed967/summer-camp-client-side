@@ -13,6 +13,7 @@ import AddAClass from "../pages/InstructorDashboard/AddAClass";
 import MyClassInstructor from "../pages/InstructorDashboard/MyClassInstructor";
 import ManageClasses from "../pages/AdminDsashboard/manageClasses";
 import ManageUsers from "../pages/AdminDsashboard/ManageUsers";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
 
 
 
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
                 element : <ManageUsers></ManageUsers>
             }
         ]
+    },
+    {
+        path : "*",
+        element : <ErrorPage></ErrorPage>
     }
   ]);
 
