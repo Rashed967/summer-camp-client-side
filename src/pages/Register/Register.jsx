@@ -35,7 +35,7 @@ const Register = () => {
           return updateUserProfile(name, photoUrl);
         })
         .then(() => {
-          const saveUser = { name: name, email: email };
+          const saveUser = { name: name, email: email , roll : "student"};
           fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
