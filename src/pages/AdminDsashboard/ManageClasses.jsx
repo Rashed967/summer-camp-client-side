@@ -36,7 +36,7 @@ const ManageClasses = () => {
         
       };
       
-      const handldePay = id => {
+      const handleApprove = id => {
         console.log(id)
       }
 
@@ -98,7 +98,7 @@ const ManageClasses = () => {
           key: 'action',
           render: (_, record) => (
             <Space size="middle">
-              <Button onClick={() => handldePay(record._id)} className='bg-purple-600' type='primary'>Approve</Button>
+              <Button onClick={() => handleApprove(record._id)} className='bg-purple-600' type='primary'>Approve</Button>
               <Button onClick={() => handldePay(record._id)} className='bg-danger-700' type='primary'>Denay</Button>
               <Button onClick={() => handldePay(record._id)} className='bg-pink-700' type='primary'>Send Feedback</Button>
               
