@@ -9,6 +9,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 
 const NavBar = () => {
     const {user, logOut} = useContext(AuthContext)
+    console.log(user)
     const handleLogout = () =>{
         logOut()
     }
@@ -34,8 +35,8 @@ const NavBar = () => {
         <Link to="dashboard">Dashboard</Link>
         </Menu.Item>
         {
-            user && <Menu.Item key="profile" icon={<UserOutlined className='text-xl'/>}>
-            Profile
+            user && <Menu.Item key="profile" >
+            <img className='w-10 rounded-full' src={user.photoURL} alt="" />
           </Menu.Item>
         }
        {
