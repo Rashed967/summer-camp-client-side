@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCcBr-VVPh057MWRPfmK7gMHl_GZK4Hjjo",
-  authDomain: "art-and-craft-823bc.firebaseapp.com",
-  projectId: "art-and-craft-823bc",
-  storageBucket: "art-and-craft-823bc.appspot.com",
-  messagingSenderId: "999960434567",
-  appId: "1:999960434567:web:80bf8f6444b63542fca522"
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID, 
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET, 
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID
 };
 
 // Initialize Firebase 
