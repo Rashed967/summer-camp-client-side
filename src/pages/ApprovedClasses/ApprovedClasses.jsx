@@ -12,6 +12,7 @@ const { Meta } = Card;
 const ApprovedClasses = () => {
     const navigate = useNavigate()
     const {user} = useContext(AuthContext)
+    console.log(user)
     const [classes, classesLoading, refetch] = useClasses()
     if(classesLoading){
         <p>Loading...</p>

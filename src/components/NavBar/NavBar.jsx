@@ -20,10 +20,11 @@ const NavBar = () => {
          <Link to="/"> Art & Craft</Link>
         </Menu.Item>
         <Menu.Item key="home" icon={<HomeOutlined className='text-xl'/>}>
-          Home
+          <Link to="/">Home</Link>
         </Menu.Item>
         <Menu.Item key="instructor" icon={<GiTeacher className='text-xl'/>}>
-        Instructor
+          <Link to="instructors">Instructor</Link>
+        
         </Menu.Item>
         <Menu.Item key="classes" icon={<SiGoogleclassroom className='text-xl'/>}>
             <Link to="/approvedClasses">Classes</Link>

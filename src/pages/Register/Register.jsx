@@ -7,40 +7,58 @@ import { FcGoogle } from 'react-icons/fc';
 import { set } from 'react-hook-form';
 
 const Register = () => {
-    const {createUser, googleSignIn} = useContext(AuthContext)
+    const {createUser, googleSignIn, updateUserProfile} = useContext(AuthContext)
     const [error, setError] = useState('')
    
     const onFinish = (values) => {
-        const {name, email, password, confirm,photoUrl, gender} = values
-        console.log(name, email,password, confirm ,photoUrl, gender)
-
-        if(password.length < 6){
-            return setError("At least 6 character required")
-        }
-        if(!/[A-Z]/.test(password)){
-            return setError("At least one capital letter for requried")
-        }
-        if(!/[!@#$%^&*]/.test(password)){
-           return setError("At lest one special character required")
-        }
-        if(password !== confirm){
-            return setError("password does not match")
-        }
-        if(password === confirm){
-            setError("")
-            createUser(email, password)
-            .then(result => {
-                const user = result.user;
-                console.log(user)
-                alert("user created successfully")
-            })
-
-        }
-        
-      };
-      const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-      };
+      const { name, email, password, confirm, photoUrl, gender } = values;
+      console.log(name, email, password, confirm, photoUrl, gender);
+    
+      if (password.length < 6) {
+        return setError("At least 6 characters required");
+      }
+      if (!/[A-Z]/.test(password)) {
+        return setError("At least one capital letter required");
+      }
+      if (!/[!@#$%^&*]/.test(password)) {
+        return setError("At least one special character required");
+      }
+      if (password !== confirm) {
+        return setError("Passwords do not match");
+      }
+    
+      setError(""); // Reset error message
+    
+      createUser(email, password)
+        .then((result) => {
+          const user = result.user;
+          return updateUserProfile(name, photoUrl);
+        })
+        .then(() => {
+          const saveUser = { name: name, email: email };
+          fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json',
+            },
+            body: JSON.stringify(saveUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+            });
+          alert("User created successfully");
+        })
+        .catch((error) => {
+          // Handle any error that occurs during the process
+          console.error(error);
+        });
+    };
+    
+    const onFinishFailed = (errorInfo) => {
+      console.log('Failed:', errorInfo);
+    };
+    
 
       const signInWithGoogle = () => {
         googleSignIn()
