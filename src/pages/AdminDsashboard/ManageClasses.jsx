@@ -8,7 +8,7 @@ import useClasses from '../../hooks/useClasses';
 const ManageClasses = () => {
     const {user, loading} = useContext(AuthContext)
     const [classes, classesLoading] = useClasses()
-    console.log(classes)
+    // console.log(classes)
     
    
     // const [email, setEmail] = useState('')
@@ -24,22 +24,20 @@ const ManageClasses = () => {
         return response.data;
     };
 
-    const mutation = useMutation(deleteData, {
+    const mutationDelete = useMutation(deleteData, {
         onSuccess: () => {
             queryClient.invalidateQueries('selectedClasses');
           },
     });
     
       const handleDelete = (id) => {
-        mutation.mutate(id);
+        mutationDelete.mutate(id);
         console.log(id)
         
       };
       
-      const handleApprove = id => {
-        console.log(id)
-      }
 
+    
 
     const {data : selectedClasses = [], isLoading : selectedClassLoading, refetch} = useQueryClient({
         queryKey : ['selectedClasses'],
@@ -53,6 +51,42 @@ const ManageClasses = () => {
         }
         
     })
+    
+    // update classes status 
+    const updateClassStatus = async (classId) => {
+      try {
+        await axios.put(`http://localhost:5000/classes/${classId}`, { status: 'approved' });
+        // Status updated successfully
+        refetch
+      } catch (error) {
+        // Handle error
+      }
+    };
+
+    const mutationUpdate = useMutation((classId) => updateClassStatus(classId));
+
+  const handleApprove = (classId) => {
+    mutationUpdate.mutate(classId);
+   
+  };
+
+
+  const updateClassStatusToDenied = async (classId) => {
+    try {
+      await axios.put(`http://localhost:5000/classes/${classId}`, { status: 'denied' });
+      // Status updated successfully
+    } catch (error) {
+      // Handle error
+    }
+  };
+  
+  // ...
+
+  const mutationDenied = useMutation((classId) => updateClassStatusToDenied(classId));
+  
+  const handleDeny = (classId) => {
+    mutationDenied.mutate(classId);
+  };
 
     const columns = [
         {
@@ -98,9 +132,9 @@ const ManageClasses = () => {
           key: 'action',
           render: (_, record) => (
             <Space size="middle">
-              <Button onClick={() => handleApprove(record._id)} className='bg-purple-600' type='primary'>Approve</Button>
-              <Button onClick={() => handldePay(record._id)} className='bg-danger-700' type='primary'>Denay</Button>
-              <Button onClick={() => handldePay(record._id)} className='bg-pink-700' type='primary'>Send Feedback</Button>
+              <Button disabled={record.status === 'approved' || record.status === 'denied'} onClick={() => handleApprove(record._id)} className='bg-purple-600' type='primary'>Approve</Button>
+              <Button disabled={record.status === 'approved' || record.status === 'denied'} onClick={() => handleDeny(record._id)} className='bg-danger-700' type='primary'>Denay</Button>
+              <Button onClick={() => handleDeny(record._id)} className='bg-pink-700' type='primary'>Send Feedback</Button>
               
             </Space>
           ),
