@@ -74,12 +74,27 @@ const MyClassInstructor = () => {
           dataIndex: 'instructor',
         },
         {
+          title: 'Total inrolled',
+          key: 'totalInrolled',
+          dataIndex: `totalInrolled`,
+        },
+        {
+          title: 'Status',
+          key: 'status',
+          dataIndex: 'status',
+        },
+        {
+          title: 'Feedback',
+          key: 'feedback',
+          dataIndex: 'feedback',
+        },
+        {
           title: 'Action',
           key: 'action',
           render: (_, record) => (
             <Space size="middle">
-              <Button onClick={() => handldePay(record._id)} className='bg-purple-600' type='primary'>Payment</Button>
-              <Button onClick={() =>handleDelete(record._id)} className='bg-danger-700' type='primary'>Delete</Button>
+              <Button onClick={() => handldePay(record._id)} className='bg-purple-600' type='primary'>Update</Button>
+            
               
             </Space>
           ),
