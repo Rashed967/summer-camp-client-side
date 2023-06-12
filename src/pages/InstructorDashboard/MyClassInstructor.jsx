@@ -40,8 +40,8 @@ const MyClassInstructor = () => {
     const {data : selectedClasses = [], isLoading : selectedClassLoading, refetch} = useQuery({
         queryKey : ['selectedClasses'],
         queryFn : async () => {
-            const respons = await axios.get(`http://localhost:5000/classessByEmail?email=hossain@mail.com`)
-            
+            const respons = await axios.get(`http://localhost:5000/classessByEmail?email=${user?.email}`)
+            // hossain@mail.com
             if(selectedClassLoading){
                 <p>Loading</p>
                 refetch()

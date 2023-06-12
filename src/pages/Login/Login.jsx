@@ -37,7 +37,7 @@ const Login = () => {
   
     return (
         <div className="w-3/4 mx-auto">   
-            <h2>login page</h2>
+            {/* <h2>login page</h2> */}
             <Form
     name="basic"
     labelCol={{

@@ -31,9 +31,13 @@ const NavBar = () => {
             <Link to="/approvedClasses">Classes</Link>
         
         </Menu.Item>
-        <Menu.Item key="dashboard" icon={<MdDashboard className='text-xl'/>}>
+        
+        {
+          user &&
+          <Menu.Item key="dashboard" icon={<MdDashboard className='text-xl'/>}>
         <Link to="dashboard">Dashboard</Link>
         </Menu.Item>
+        }
         {
             user && <Menu.Item key="profile" >
             <img className='w-10 rounded-full' src={user.photoURL} alt="" />

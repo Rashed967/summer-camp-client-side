@@ -14,6 +14,8 @@ import MyClassInstructor from "../pages/InstructorDashboard/MyClassInstructor";
 import ManageClasses from "../pages/AdminDsashboard/manageClasses";
 import ManageUsers from "../pages/AdminDsashboard/ManageUsers";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
+import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
 
 
 
@@ -59,19 +61,19 @@ const router = createBrowserRouter([
             },
             {
                 path : "addAClass",
-                element : <AddAClass></AddAClass>
+                element : <InstructorRoute><AddAClass></AddAClass></InstructorRoute>
             },
             {
                 path : "myClassInstructor",
-                element : <MyClassInstructor></MyClassInstructor>
+                element : <InstructorRoute><MyClassInstructor></MyClassInstructor></InstructorRoute>
             },
             {
                 path : "manageClasses",
-                element : <ManageClasses></ManageClasses>
+                element : <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
             },
             {
                 path : "manageUsers",
-                element : <ManageUsers></ManageUsers>
+                element : <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
             }
         ]
     },
