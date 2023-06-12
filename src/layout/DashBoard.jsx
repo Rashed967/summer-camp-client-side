@@ -36,6 +36,14 @@ const DashBoard = () => {
                         </ul>
 
                     </div>
+                    <div className='border-b-2 pb-6'>
+                        <h3 className='font-medium text-xl mb-4'>Admin DashBoard</h3>
+                        <ul className='space-y-2'>
+                            <li><Link to="manageClasses">Manage classes</Link></li>
+                            <li><Link to="manageUsers">Manage users</Link></li>
+                        </ul>
+
+                    </div>
                 </Drawer>
             </>
             <Outlet></Outlet>
