@@ -28,7 +28,7 @@ const AddAClass = () => {
         status: 'pending', // Set the status to your desired value
       };
   
-      return axios.post('http://localhost:5000/classes', newClassData);
+      return axios.post('https://b7a12-summer-camp-server-side-rashed967.vercel.app/classes', newClassData);
     }, {
       onSuccess: (respons) => {
         // Invalidate the classes query to trigger a refetch

@@ -24,7 +24,7 @@ const ApprovedClasses = () => {
         }
         const bookedClass = classes.find(cl => cl._id === id)
         console.log(bookedClass)
-        axios.post('http://localhost:5000/bookedClasses', bookedClass)
+        axios.post('https://b7a12-summer-camp-server-side-rashed967.vercel.app/bookedClasses', bookedClass)
         .then(respons => {
             console.log(respons)
         })

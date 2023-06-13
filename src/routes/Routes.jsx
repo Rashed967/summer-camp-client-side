@@ -16,6 +16,8 @@ import ManageUsers from "../pages/AdminDsashboard/ManageUsers";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
+import Payment from "../pages/StudentDashBoard/Payment";
+import PrivateRoute from "./PrivetRoute";
 
 
 
@@ -48,7 +50,7 @@ const router = createBrowserRouter([
     },
     {
         path : "dashboard",
-        element : <DashBoard></DashBoard>,
+        element : <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
         children : [
          
             {
@@ -58,6 +60,10 @@ const router = createBrowserRouter([
             {
                 path : "enrolledClass",
                 element : <MyEnrolledClass></MyEnrolledClass>
+            },
+            {
+                path : "payment",
+                element : <Payment></Payment>
             },
             {
                 path : "addAClass",

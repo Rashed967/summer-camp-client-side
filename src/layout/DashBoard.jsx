@@ -20,7 +20,7 @@ const DashBoard = () => {
 
     useEffect(() => {
       // Fetch the user data from the server
-      axios.get(`http://localhost:5000/getUserRoll?email=${user?.email}`)
+      axios.get(`https://b7a12-summer-camp-server-side-rashed967.vercel.app/getUserRoll?email=${user?.email}`)
     //   zamakapersonal@gmail.com
     //   rashed@mail.com
         .then(response => {
@@ -56,6 +56,7 @@ const DashBoard = () => {
           <ul className='space-y-2'>
             <li><Link to="mySelectedClasses">My Selected Classes</Link></li>
             <li><Link to="enrolledClass">Enrolled Classes</Link></li>
+            <li><Link to="payment">Payment</Link></li>
           </ul>
         </div>
       )}

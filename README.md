@@ -26,6 +26,6 @@ this is a summer school website for learing all about art and craft, where you c
 
 
 ## 🔗 Live site link
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://katherineoelsner.com/)
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://art-and-craft-823bc.web.app/)
 
 

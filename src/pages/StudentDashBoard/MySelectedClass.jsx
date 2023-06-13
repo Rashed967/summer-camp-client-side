@@ -10,7 +10,7 @@ const MySelectedClass = () => {
     const queryClient = useQueryClient();
     
     const deleteData = async (id) => {
-        const response = await axios.delete(`http://localhost:5000/bookedClasses/${id}`);
+        const response = await axios.delete(`https://b7a12-summer-camp-server-side-rashed967.vercel.app/bookedClasses/${id}`);
         console.log(response.data)
         refetch
         return response.data;
@@ -35,7 +35,7 @@ const MySelectedClass = () => {
     const {data : selectedClasses = [], isLoading : selectedClassLoading, refetch} = useQuery({
         queryKey : ['selectedClasses'],
         queryFn : async () => {
-            const respons = await axios.get('http://localhost:5000/bookedClasses')
+            const respons = await axios.get('https://b7a12-summer-camp-server-side-rashed967.vercel.app/bookedClasses')
             if(selectedClassLoading){
                 <p>Loading</p>
                 refetch()

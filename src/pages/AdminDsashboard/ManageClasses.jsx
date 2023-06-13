@@ -19,7 +19,7 @@ const ManageClasses = () => {
     const queryClient = useQueryClient();
     
     const deleteData = async (id) => {
-        const response = await axios.delete(`http://localhost:5000/bookedClasses/${id}`);
+        const response = await axios.delete(`https://b7a12-summer-camp-server-side-rashed967.vercel.app/bookedClasses/${id}`);
         refetch
         return response.data;
     };
@@ -42,7 +42,7 @@ const ManageClasses = () => {
     const {data : selectedClasses = [], isLoading : selectedClassLoading, refetch} = useQueryClient({
         queryKey : ['selectedClasses'],
         queryFn : async () => {
-            const respons = await axios.get(`http://localhost:5000/classessByEmail?email=hossain@mail.com`)
+            const respons = await axios.get(`https://b7a12-summer-camp-server-side-rashed967.vercel.app/classessByEmail?email=hossain@mail.com`)
             if(selectedClassLoading){
                 <p>Loading</p>
                 refetch()
@@ -55,7 +55,7 @@ const ManageClasses = () => {
     // update classes status 
     const updateClassStatus = async (classId) => {
       try {
-        await axios.put(`http://localhost:5000/classes/${classId}`, { status: 'approved' });
+        await axios.put(`https://b7a12-summer-camp-server-side-rashed967.vercel.app/classes/${classId}`, { status: 'approved' });
         // Status updated successfully
         refetch
       } catch (error) {
@@ -73,7 +73,7 @@ const ManageClasses = () => {
 
   const updateClassStatusToDenied = async (classId) => {
     try {
-      await axios.put(`http://localhost:5000/classes/${classId}`, { status: 'denied' });
+      await axios.put(`https://b7a12-summer-camp-server-side-rashed967.vercel.app/classes/${classId}`, { status: 'denied' });
       // Status updated successfully
     } catch (error) {
       // Handle error

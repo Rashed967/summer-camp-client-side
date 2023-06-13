@@ -17,7 +17,7 @@ const ManageUsers = () => {
     const queryClient = useQueryClient();
     
     const deleteData = async (id) => {
-        const response = await axios.delete(`http://localhost:5000/bookedClasses/${id}`);
+        const response = await axios.delete(`https://b7a12-summer-camp-server-side-rashed967.vercel.app/bookedClasses/${id}`);
         console.log(response.data)
         refetch
         return response.data;
@@ -41,7 +41,7 @@ const ManageUsers = () => {
         // update user to instructor 
     const userToInstructor = async (classId) => {
         try {
-          await axios.put(`http://localhost:5000/users/${classId}`, { roll: 'Instructor' });
+          await axios.put(`https://b7a12-summer-camp-server-side-rashed967.vercel.app/users/${classId}`, { roll: 'Instructor' });
           // Status updated successfully
           refetch
         } catch (error) {
@@ -63,7 +63,7 @@ const ManageUsers = () => {
 
     const userToAdmin = async (classId) => {
         try {
-          await axios.put(`http://localhost:5000/users/${classId}`, { roll: 'Admin' });
+          await axios.put(`https://b7a12-summer-camp-server-side-rashed967.vercel.app/users/${classId}`, { roll: 'Admin' });
           // Status updated successfully
         } catch (error) {
           // Handle error
@@ -82,7 +82,7 @@ const ManageUsers = () => {
     const {data : selectedClasses = [], isLoading : selectedClassLoading, refetch} = useQuery({
         queryKey : ['selectedClasses'],
         queryFn : async () => {
-            const respons = await axios.get(`http://localhost:5000/users`)
+            const respons = await axios.get(`https://b7a12-summer-camp-server-side-rashed967.vercel.app/users`)
             
             if(selectedClassLoading){
                 <p>Loading</p>

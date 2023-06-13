@@ -36,7 +36,7 @@ const Register = () => {
         })
         .then(() => {
           const saveUser = { name: name, email: email , roll : "student"};
-          fetch('http://localhost:5000/users', {
+          fetch('https://b7a12-summer-camp-server-side-rashed967.vercel.app/users', {
             method: 'POST',
             headers: {
               'content-type': 'application/json',
